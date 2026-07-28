@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapret by deffo — Документация</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        canvas#binary {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.15;
+        }
+
+        .wrapper {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 30px 80px;
+        }
+
+        .back {
+            display: inline-block;
+            color: #00ff88;
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .back:hover {
+            opacity: 0.7;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            color: #333;
+            font-size: 13px;
+            margin-bottom: 50px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 10px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            color: #555;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+            color: #aaa;
+        }
+
+        .tab.active {
+            background: rgba(0, 255, 136, 0.08);
+            border-color: rgba(0, 255, 136, 0.4);
+            color: #00ff88;
+        }
+
+        .doc {
+            display: none;
+        }
+
+        .doc.active {
+            display: block;
+        }
+
+        .doc h2 {
+            font-size: 22px;
+            color: #ccc;
+            margin: 35px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .doc h3 {
+            font-size: 16px;
+            color: #999;
+            margin: 25px 0 10px;
+        }
+
+        .doc p, .doc li {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .doc ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .doc li {
+            margin-bottom: 8px;
+        }
+
+        .doc strong {
+            color: #999;
+        }
+
+        .doc a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+
+        .highlight {
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 2px solid #00ff88;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #222;
+            font-size: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="binary"></canvas>
+
+    <div class="wrapper">
+        <a class="back" href="index.html">&larr; Назад</a>
+        <h1>&#128220; Юридические документы</h1>
+        <p class="date">Последнее обновление: 17 июля 2026 г.</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showDoc('tos')">Условия использования</button>
+            <button class="tab" onclick="showDoc('privacy')">Политика конфиденциальности</button>
+            <button class="tab" onclick="showDoc('eula')">Лицензионное соглашение</button>
+        </div>
+
+        <!-- ===================== TERMS OF SERVICE ===================== -->
+        <div class="doc active" id="tos">
+            <h2>Условия использования (Terms of Service)</h2>
+
+            <h3>1. Общие положения</h3>
+            <p>Настоящее Соглашение регулирует использование программного продукта <strong>"Zapret by deffo"</strong> (далее — «Программа»), разработанного физическим лицом, действующим под псевдонимом <strong>deffo</strong> (далее — «Разработчик»).</p>
+            <p>Используя Программу, вы подтверждаете, что ознакомились с данными условиями и принимаете их полностью.</p>
+
+            <h3>2. Лицензия</h3>
+            <p>Разработчик предоставляет вам неисключительную, непередаваемую, отозвываемую лицензию на использование Программы в личных некоммерческих целях.</p>
+            <p>Программа защищена авторским правом. Все права на Программу принадлежат Разработчику.</p>
+
+            <div class="highlight">
+                <p><strong>Вы имеете право:</strong></p>
+                <ul>
+                    <li>Устанавливать и использовать Программу на своих устройствах</li>
+                    <li>Создавать резервные копии Программы</li>
+                </ul>
+            </div>
+
+            <div class="highlight">
+                <p><strong>Вы НЕ имеете право:</strong></p>
+                <ul>
+                    <li>Модифицировать, декомпилировать или создавать производные продукты</li>
+                    <li>Продавать, сдавать в аренду или распространять Программу</li>
+                    <li>Удалять или изменять уведомления о авторских правах</li>
+                    <li>Использовать Программу в коммерческих целях без письменного разрешения</li>
+                    <li>Распространять Программу через сторонние ресурсы без разрешения Разработчика</li>
+                    <li>Обходить технические средства защиты или пытаться извлечь защищённый контент</li>
+                </ul>
+            </div>
+
+            <h3>3. Отказ от ответственности</h3>
+            <p>Программа предоставляется <strong>"как есть"</strong>, без каких-либо гарантий. Разработчик не несёт ответственности за:</p>
+            <ul>
+                <li>Возможный ущерб, нанесённый в результате использования Программы</li>
+                <li>Потерю данных или функциональности</li>
+                <li>Несовместимость с другими программами или системами</li>
+            </ul>
+
+            <h3>4. Изменения в соглашении</h3>
+            <p>Разработчик оставляет за собой право изменять данные условия в любое время. Изменения вступают в силу с момента публикации обновлённой версии.</p>
+
+            <h3>5. Прекращение действия</h3>
+            <p>Разработчик может прекратить действие данной лицензии в случае нарушения вами любых условий настоящего соглашения.</p>
+
+            <h3>6. Контакты</h3>
+            <p>По вопросам, связанным с использованием Программы, обращайтесь: <a href="#">Telegram</a></p>
+        </div>
+
+        <!-- ===================== PRIVACY POLICY ===================== -->
+        <div class="doc" id="privacy">
+            <h2>Политика конфиденциальности (Privacy Policy)</h2>
+
+            <h3>1. Какие данные мы собираем</h3>
+            <p><strong>Zapret by deffo</strong> не собирает, не хранит и не передаёт никакие персональные данные пользователей.</p>
+
+            <div class="highlight">
+                <p>Программа <strong>не</strong> выполняет:</p>
+                <ul>
+                    <li>Сбор личной информации</li>
+                    <li>Отправку данных на сторонние серверы</li>
+                    <li>Установку файлов cookie</li>
+                    <li>Отслеживание действий пользователя</li>
+                </ul>
+            </div>
+
+            <h3>2. Хранение данных</h3>
+            <p>Все данные, обрабатываемые Программой, остаются исключительно на вашем устройстве. Никакая информация не покидает ваш компьютер без вашего прямого действия.</p>
+
+            <h3>3. Сторонние сервисы</h3>
+            <p>Программа не интегрируется со сторонними сервисами аналитики, рекламы или отслеживания.</p>
+
+            <h3>4. Безопасность</h3>
+            <p>Разработчик прилагает разумные усилия для обеспечения безопасности Программы, однако не может гарантировать абсолютную защиту от всех уязвимостей.</p>
+
+            <h3>5. Изменения в политике</h3>
+            <p>Настоящая политика может быть обновлена. Дата последнего обновления указана в начале документа.</p>
+
+            <h3>6. Контакты</h3>
+            <p>По вопросам конфиденциальности: <a href="#">Telegram</a></p>
+        </div>
+
+        <!-- ===================== EULA ===================== -->
+        <div class="doc" id="eula">
+            <h2>Лицензионное соглашение конечного пользователя (EULA)</h2>
+
+            <h3>1. Предмет соглашения</h3>
+            <p>Настоящее Лицензионное соглашение (EULA) является юридически обязывающим договором между вами («Пользователь») и <strong>deffo</strong> («Разработчик») на использование программного продукта <strong>"Zapret by deffo"</strong> (далее — «Программа»), включая все компоненты: панель управления, конфигурации и вспомогательные файлы.</p>
+
+            <h3>2. Предоставление лицензии</h3>
+            <p>Разработчик предоставляет Пользователю непередаваемую, отозвываемую, неисключительную лицензию на установку и использование одной копии Программы на одном устройстве для личного некоммерческого использования.</p>
+            <p>Версия Программы: <strong>1.0.0</strong> и выше.</p>
+
+            <h3>3. Ограничения</h3>
+            <p>Пользователь обязуется не:</p>
+            <ul>
+                <li>Передавать, продавать, сдавать в аренду или сублицензировать Программу</li>
+                <li>Декомпилировать, реверс-инжинирить, дизассемблировать или иным образом пытаться получить исходный код Программы</li>
+                <li>Удалять, отключать или изменять любые уведомления о собственности, метки или водяные знаки</li>
+                <li>Использовать Программу любым способом, нарушающим применимые законы</li>
+                <li>Распространять модифицированные версии Программы или выдавать их за оригинальные</li>
+                <li>Обходить технические средства защиты Программы</li>
+            </ul>
+
+            <h3>4. Интеллектуальная собственность</h3>
+            <p>Программа и все права на неё, включая авторские права, патенты, торговые марки и коммерческую тайну, принадлежат Разработчику.</p>
+
+            <h3>5. Ограничение ответственности</h3>
+            <p>В максимальной степени, допустимой применимым законодательством, Разработчик не несёт ответственности за:</p>
+            <ul>
+                <li>Любой косвенный, случайный или специальный ущерб</li>
+                <li>Потерю данных или прибыли</li>
+                <li>Прерывание бизнеса</li>
+            </ul>
+
+            <h3>6. Гарантия</h3>
+            <p>Программа предоставляется <strong>без каких-либо гарантий</strong>, явных или подразумеваемых, включая, но не ограничиваясь, подразумеваемые гарантии товарности и пригодности для определённой цели.</p>
+
+            <h3>7. Прекращение действия</h3>
+            <p>Настоящее соглашение действует до его прекращения. Разработчик может прекратить действие лицензии в случае нарушения любых условий. После прекращения вы должны уничтожить все копии Программы.</p>
+
+            <h3>8. Применимое право</h3>
+            <p>Настоящее соглашение регулируется и толкуется в соответствии с законодательством юрисдикции, в которой проживает Разработчик.</p>
+
+            <h3>9. Полное соглашение</h3>
+            <p>Настоящее соглашение представляет собой полное соглашение между сторонами и заменяет все предыдущие договоры, устные или письменные.</p>
+        </div>
+
+        <footer>
+            &copy; 2026 deffo. Все права защищены. &nbsp;|&nbsp; <a href="index.html" style="color:#00ff88;">На главную</a>
+        </footer>
+    </div>
+
+    <script>
+        function showDoc(id) {
+            document.querySelectorAll('.doc').forEach(d => d.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        const canvas = document.getElementById('binary');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const fontSize = 14;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = Math.random() > 0.5 ? '1' : '0';
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+                ctx.fillStyle = 'rgba(60, 70, 60, 0.2)';
+                ctx.fillText(char, x, y);
+
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 60);
+    </script>
+</body>
+</html>
